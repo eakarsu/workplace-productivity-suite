@@ -23,6 +23,8 @@ const featureSeeds = [
   ["transcript-summaries","Transcript Summaries","Transcript Summaries review queue","Meeting Intelligence","Confirm next action and update evidence"],
   ["action-items","Action Items","Action Items review queue","Meeting Intelligence","Confirm next action and update evidence"],
   ["crm-task-sync","CRM/Task Sync","CRM/Task Sync review queue","Meeting Intelligence","Confirm next action and update evidence"],
+  ["action-item-followup","Action Item Follow-Up","Action Item Follow-Up workspace","Meeting Intelligence","Confirm findings, next action, and audit evidence"],
+  ["transcript-summary","Transcript Summary","Transcript Summary workspace","Meeting Intelligence","Confirm findings, next action, and audit evidence"],
   ['documents', 'Documents', 'Documents operating queue', 'Core Platform Lead', 'Review and assign next action'],
   ['notifications', 'Notifications', 'Notifications operating queue', 'Core Platform Lead', 'Review and assign next action'],
   ['integrations', 'Integrations', 'Integrations operating queue', 'Core Platform Lead', 'Review and assign next action'],

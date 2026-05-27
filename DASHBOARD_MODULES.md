@@ -8,3 +8,5 @@
 - Docs operating view
 - Approvals operating view
 - OKRs operating view
+
+- Meeting Intelligence operating view

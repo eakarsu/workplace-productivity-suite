@@ -18,6 +18,8 @@ const entitySeeds = [
   ["transcript-summaries","Transcript Summaries Records","Transcript Summaries operating queue","Review","Transcript Summaries follow-up list","Meeting Intelligence","$0"],
   ["action-items","Action Items Records","Action Items operating queue","Review","Action Items follow-up list","Meeting Intelligence","$0"],
   ["crm-task-sync","CRM/Task Sync Records","CRM/Task Sync operating queue","Review","CRM/Task Sync follow-up list","Meeting Intelligence","$0"],
+  ["action-item-followup","Action Item Follow-Up Records","Action Item Follow-Up operating queue","Review","Action Item Follow-Up follow-up list","Meeting Intelligence","$0"],
+  ["transcript-summary","Transcript Summary Records","Transcript Summary operating queue","Review","Transcript Summary follow-up list","Meeting Intelligence","$0"],
   ['documents', 'Documents Records', 'Documents priority queue', 'Open', 'Documents exception list', 'Core Platform Lead', '$0'],
   ['notifications', 'Notifications Records', 'Notifications priority queue', 'Review', 'Notifications exception list', 'Core Platform Lead', '$0'],
   ['integrations', 'Integrations Records', 'Integrations priority queue', 'Action needed', 'Integrations exception list', 'Core Platform Lead', '$0'],

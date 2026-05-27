@@ -7,6 +7,8 @@ Primary routes:
 - `/profiles`
 
 Feature routes:
+- `/transcript-summary`
+- `/action-item-followup`
 - `/crm-task-sync`
 - `/action-items`
 - `/transcript-summaries`
