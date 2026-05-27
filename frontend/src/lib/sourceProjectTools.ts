@@ -1,5 +1,20 @@
 export const sourceProjectTools = [
   {
+    "id": "meeting-intelligence-copilot",
+    "title": "Meeting Intelligence Copilot",
+    "category": "Meeting Intelligence",
+    "description": "Focused Meeting Intelligence AI tool elevated inside the current merged suite.",
+    "defaultPrompt": "Turn the meeting transcript into professional notes, decisions, risks, action items, owners, due dates, and CRM/task follow-ups.",
+    "inputLabel": "Meeting Intelligence context",
+    "outputLabel": "Meeting Intelligence AI response",
+    "signals": [
+      "Meeting Notes",
+      "Transcript Summaries",
+      "Action Items",
+      "CRM/Task Sync"
+    ]
+  },
+  {
     "id": "ai-project-manager-source-workflow",
     "title": "AI Project Manager Source Workflow",
     "category": "Source Project Coverage",

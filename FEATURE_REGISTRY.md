@@ -18,3 +18,14 @@
 - Profiles
 - AI Assistant
 - AI Tools
+
+## Meeting Intelligence
+
+- Meeting Notes
+- Transcript Summaries
+- Action Items
+- CRM/Task Sync
+
+## Focused enhancement: Meeting Intelligence
+
+Source evidence: AiMeetingAgent.

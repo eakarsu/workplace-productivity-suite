@@ -1,11 +1,40 @@
 # Workplace Productivity Suite Source Data Tables
 
-Mapped source projects: 1
+Mapped source projects: 2
 
-Detected source tables: 29
+Detected source tables: 58
 
 | Source Project | Table | Framework | Columns | Source File |
 | --- | --- | --- | ---: | --- |
+| AiMeetingAgent | ActionItem | Prisma | 10 | backend/prisma/schema.prisma |
+| AiMeetingAgent | AgendaItem | Prisma | 8 | backend/prisma/schema.prisma |
+| AiMeetingAgent | AIInsight | Prisma | 8 | backend/prisma/schema.prisma |
+| AiMeetingAgent | Analytics | Prisma | 7 | backend/prisma/schema.prisma |
+| AiMeetingAgent | CalendarEvent | Prisma | 11 | backend/prisma/schema.prisma |
+| AiMeetingAgent | Decision | Prisma | 7 | backend/prisma/schema.prisma |
+| AiMeetingAgent | DecisionLink | Prisma | 6 | backend/prisma/schema.prisma |
+| AiMeetingAgent | FollowUp | Prisma | 8 | backend/prisma/schema.prisma |
+| AiMeetingAgent | gap_features | SQL | 6 | backend/src/routes/gap-compliance.ts |
+| AiMeetingAgent | gap_features | SQL | 6 | backend/src/routes/gap-decision-consensus-check.ts |
+| AiMeetingAgent | gap_features | SQL | 6 | backend/src/routes/gap-full-text.ts |
+| AiMeetingAgent | gap_features | SQL | 6 | backend/src/routes/gap-in-meeting.ts |
+| AiMeetingAgent | gap_features | SQL | 6 | backend/src/routes/gap-long-term.ts |
+| AiMeetingAgent | gap_features | SQL | 6 | backend/src/routes/gap-meeting-quality-score.ts |
+| AiMeetingAgent | gap_features | SQL | 6 | backend/src/routes/gap-mobile.ts |
+| AiMeetingAgent | gap_features | SQL | 6 | backend/src/routes/gap-next-meeting-optimizer.ts |
+| AiMeetingAgent | gap_features | SQL | 6 | backend/src/routes/gap-outlook.ts |
+| AiMeetingAgent | gap_features | SQL | 6 | backend/src/routes/gap-participant-engagement-analyzer.ts |
+| AiMeetingAgent | gap_features | SQL | 6 | backend/src/routes/gap-video.ts |
+| AiMeetingAgent | Integration | Prisma | 5 | backend/prisma/schema.prisma |
+| AiMeetingAgent | Meeting | Prisma | 18 | backend/prisma/schema.prisma |
+| AiMeetingAgent | MeetingCoachReport | Prisma | 10 | backend/prisma/schema.prisma |
+| AiMeetingAgent | MeetingNote | Prisma | 7 | backend/prisma/schema.prisma |
+| AiMeetingAgent | MeetingSeries | Prisma | 11 | backend/prisma/schema.prisma |
+| AiMeetingAgent | MeetingTemplate | Prisma | 6 | backend/prisma/schema.prisma |
+| AiMeetingAgent | Notification | Prisma | 7 | backend/prisma/schema.prisma |
+| AiMeetingAgent | Participant | Prisma | 7 | backend/prisma/schema.prisma |
+| AiMeetingAgent | Transcript | Prisma | 6 | backend/prisma/schema.prisma |
+| AiMeetingAgent | User | Prisma | 11 | backend/prisma/schema.prisma |
 | AIProjectManager | activity_logs | SQL | 8 | backend/db/init.sql |
 | AIProjectManager | ai_results | SQL | 6 | backend/routes/ai-burnout-detection.js |
 | AIProjectManager | ai_results | SQL | 8 | backend/routes/ai.js |

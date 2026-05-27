@@ -10,6 +10,22 @@ export type SourceDashboardAction = {
 
 export const sourceDashboardActions: SourceDashboardAction[] = [
   {
+    "id": "meeting-intelligence",
+    "label": "Meeting Intelligence",
+    "description": "Open Meeting Intelligence workflows elevated from AiMeetingAgent.",
+    "href": "/meeting-notes",
+    "sourceProjects": [
+      "AiMeetingAgent"
+    ],
+    "examples": [
+      "Meeting Notes",
+      "Transcript Summaries",
+      "Action Items",
+      "CRM/Task Sync"
+    ],
+    "count": 1
+  },
+  {
     "id": "ai-assistant",
     "label": "AI Assistant",
     "description": "Run source-derived AI assistant workflows and prompts.",

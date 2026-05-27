@@ -20,6 +20,2267 @@ export type SourceDataTable = {
 
 export const sourceDataTables: SourceDataTable[] = [
   {
+    "id": "ai-meeting-agent-backend-prisma-schema-prisma-action-item",
+    "sourceProject": "AiMeetingAgent",
+    "name": "ActionItem",
+    "displayName": "Action Item",
+    "framework": "Prisma",
+    "sourceFile": "backend/prisma/schema.prisma",
+    "columns": [
+      {
+        "name": "id",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": true,
+        "unique": false,
+        "defaultValue": "uuid(",
+        "sourceLine": "id          String   @id @default(uuid())"
+      },
+      {
+        "name": "title",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "title       String"
+      },
+      {
+        "name": "description",
+        "type": "String?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "description String?"
+      },
+      {
+        "name": "status",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "\"pending\"",
+        "sourceLine": "status      String   @default(\"pending\") // pending, in_progress, completed"
+      },
+      {
+        "name": "priority",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "\"medium\"",
+        "sourceLine": "priority    String   @default(\"medium\") // low, medium, high, urgent"
+      },
+      {
+        "name": "dueDate",
+        "type": "DateTime?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "dueDate     DateTime?"
+      },
+      {
+        "name": "meetingId",
+        "type": "String?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "meetingId   String?"
+      },
+      {
+        "name": "meeting",
+        "type": "Meeting?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "meeting     Meeting? @relation(fields: [meetingId], references: [id], onDelete: SetNull)"
+      },
+      {
+        "name": "assigneeId",
+        "type": "String?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "assigneeId  String?"
+      },
+      {
+        "name": "assignee",
+        "type": "User?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "assignee    User?    @relation(fields: [assigneeId], references: [id], onDelete: SetNull)"
+      }
+    ]
+  },
+  {
+    "id": "ai-meeting-agent-backend-prisma-schema-prisma-agenda-item",
+    "sourceProject": "AiMeetingAgent",
+    "name": "AgendaItem",
+    "displayName": "Agenda Item",
+    "framework": "Prisma",
+    "sourceFile": "backend/prisma/schema.prisma",
+    "columns": [
+      {
+        "name": "id",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": true,
+        "unique": false,
+        "defaultValue": "uuid(",
+        "sourceLine": "id          String   @id @default(uuid())"
+      },
+      {
+        "name": "title",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "title       String"
+      },
+      {
+        "name": "description",
+        "type": "String?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "description String?"
+      },
+      {
+        "name": "duration",
+        "type": "Int?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "duration    Int?     // in minutes"
+      },
+      {
+        "name": "order",
+        "type": "Int",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "order       Int"
+      },
+      {
+        "name": "status",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "\"pending\"",
+        "sourceLine": "status      String   @default(\"pending\") // pending, in_progress, completed, skipped"
+      },
+      {
+        "name": "meetingId",
+        "type": "String?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "meetingId String?"
+      },
+      {
+        "name": "meeting",
+        "type": "Meeting?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "meeting   Meeting? @relation(fields: [meetingId], references: [id], onDelete: SetNull)"
+      }
+    ]
+  },
+  {
+    "id": "ai-meeting-agent-backend-prisma-schema-prisma-ai-insight",
+    "sourceProject": "AiMeetingAgent",
+    "name": "AIInsight",
+    "displayName": "AI Insight",
+    "framework": "Prisma",
+    "sourceFile": "backend/prisma/schema.prisma",
+    "columns": [
+      {
+        "name": "id",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": true,
+        "unique": false,
+        "defaultValue": "uuid(",
+        "sourceLine": "id          String   @id @default(uuid())"
+      },
+      {
+        "name": "type",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "type        String   // summary, sentiment, key_topics, action_suggestion, risk_alert"
+      },
+      {
+        "name": "content",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "content     String"
+      },
+      {
+        "name": "confidence",
+        "type": "Float?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "confidence  Float?"
+      },
+      {
+        "name": "meetingId",
+        "type": "String?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "meetingId   String?"
+      },
+      {
+        "name": "meeting",
+        "type": "Meeting?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "meeting     Meeting? @relation(fields: [meetingId], references: [id], onDelete: Cascade)"
+      },
+      {
+        "name": "userId",
+        "type": "String?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "userId      String?"
+      },
+      {
+        "name": "user",
+        "type": "User?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "user        User?    @relation(fields: [userId], references: [id])"
+      }
+    ]
+  },
+  {
+    "id": "ai-meeting-agent-backend-prisma-schema-prisma-analytics",
+    "sourceProject": "AiMeetingAgent",
+    "name": "Analytics",
+    "displayName": "Analytics",
+    "framework": "Prisma",
+    "sourceFile": "backend/prisma/schema.prisma",
+    "columns": [
+      {
+        "name": "id",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": true,
+        "unique": false,
+        "defaultValue": "uuid(",
+        "sourceLine": "id              String   @id @default(uuid())"
+      },
+      {
+        "name": "period",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "period          String   // daily, weekly, monthly"
+      },
+      {
+        "name": "meetingsCount",
+        "type": "Int",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "meetingsCount   Int"
+      },
+      {
+        "name": "avgDuration",
+        "type": "Float",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "avgDuration     Float"
+      },
+      {
+        "name": "actionItemsRate",
+        "type": "Float",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "actionItemsRate Float"
+      },
+      {
+        "name": "attendanceRate",
+        "type": "Float",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "attendanceRate  Float"
+      },
+      {
+        "name": "data",
+        "type": "Json?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "data            Json?"
+      }
+    ]
+  },
+  {
+    "id": "ai-meeting-agent-backend-prisma-schema-prisma-calendar-event",
+    "sourceProject": "AiMeetingAgent",
+    "name": "CalendarEvent",
+    "displayName": "Calendar Event",
+    "framework": "Prisma",
+    "sourceFile": "backend/prisma/schema.prisma",
+    "columns": [
+      {
+        "name": "id",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": true,
+        "unique": false,
+        "defaultValue": "uuid(",
+        "sourceLine": "id          String   @id @default(uuid())"
+      },
+      {
+        "name": "title",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "title       String"
+      },
+      {
+        "name": "description",
+        "type": "String?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "description String?"
+      },
+      {
+        "name": "startTime",
+        "type": "DateTime",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "startTime   DateTime"
+      },
+      {
+        "name": "endTime",
+        "type": "DateTime",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "endTime     DateTime"
+      },
+      {
+        "name": "location",
+        "type": "String?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "location    String?"
+      },
+      {
+        "name": "isAllDay",
+        "type": "Boolean",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "false",
+        "sourceLine": "isAllDay    Boolean  @default(false)"
+      },
+      {
+        "name": "recurrence",
+        "type": "String?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "recurrence  String?  // none, daily, weekly, monthly"
+      },
+      {
+        "name": "reminders",
+        "type": "Json?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "reminders   Json?"
+      },
+      {
+        "name": "externalId",
+        "type": "String?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "externalId  String?  // ID from external calendar"
+      },
+      {
+        "name": "source",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "\"internal\"",
+        "sourceLine": "source      String   @default(\"internal\") // internal, google, outlook"
+      }
+    ]
+  },
+  {
+    "id": "ai-meeting-agent-backend-prisma-schema-prisma-decision",
+    "sourceProject": "AiMeetingAgent",
+    "name": "Decision",
+    "displayName": "Decision",
+    "framework": "Prisma",
+    "sourceFile": "backend/prisma/schema.prisma",
+    "columns": [
+      {
+        "name": "id",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": true,
+        "unique": false,
+        "defaultValue": "uuid(",
+        "sourceLine": "id          String   @id @default(uuid())"
+      },
+      {
+        "name": "title",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "title       String"
+      },
+      {
+        "name": "description",
+        "type": "String?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "description String?"
+      },
+      {
+        "name": "status",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "\"approved\"",
+        "sourceLine": "status      String   @default(\"approved\") // proposed, approved, rejected, deferred"
+      },
+      {
+        "name": "madeBy",
+        "type": "String?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "madeBy      String?"
+      },
+      {
+        "name": "meetingId",
+        "type": "String?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "meetingId String?"
+      },
+      {
+        "name": "meeting",
+        "type": "Meeting?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "meeting   Meeting? @relation(fields: [meetingId], references: [id], onDelete: SetNull)"
+      }
+    ]
+  },
+  {
+    "id": "ai-meeting-agent-backend-prisma-schema-prisma-decision-link",
+    "sourceProject": "AiMeetingAgent",
+    "name": "DecisionLink",
+    "displayName": "Decision Link",
+    "framework": "Prisma",
+    "sourceFile": "backend/prisma/schema.prisma",
+    "columns": [
+      {
+        "name": "id",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": true,
+        "unique": false,
+        "defaultValue": "uuid(",
+        "sourceLine": "id             String   @id @default(uuid())"
+      },
+      {
+        "name": "fromDecisionId",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "fromDecisionId String"
+      },
+      {
+        "name": "toDecisionId",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "toDecisionId   String"
+      },
+      {
+        "name": "relationType",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "relationType   String   // overrules, refines, references"
+      },
+      {
+        "name": "confidence",
+        "type": "Float",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "0.5",
+        "sourceLine": "confidence     Float    @default(0.5)"
+      },
+      {
+        "name": "aiResults",
+        "type": "Json?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "aiResults      Json?"
+      }
+    ]
+  },
+  {
+    "id": "ai-meeting-agent-backend-prisma-schema-prisma-follow-up",
+    "sourceProject": "AiMeetingAgent",
+    "name": "FollowUp",
+    "displayName": "Follow Up",
+    "framework": "Prisma",
+    "sourceFile": "backend/prisma/schema.prisma",
+    "columns": [
+      {
+        "name": "id",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": true,
+        "unique": false,
+        "defaultValue": "uuid(",
+        "sourceLine": "id          String   @id @default(uuid())"
+      },
+      {
+        "name": "title",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "title       String"
+      },
+      {
+        "name": "description",
+        "type": "String?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "description String?"
+      },
+      {
+        "name": "dueDate",
+        "type": "DateTime?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "dueDate     DateTime?"
+      },
+      {
+        "name": "assignee",
+        "type": "String?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "assignee    String?"
+      },
+      {
+        "name": "status",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "\"pending\"",
+        "sourceLine": "status      String   @default(\"pending\") // pending, in_progress, completed"
+      },
+      {
+        "name": "meetingId",
+        "type": "String?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "meetingId String?"
+      },
+      {
+        "name": "meeting",
+        "type": "Meeting?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "meeting   Meeting? @relation(fields: [meetingId], references: [id], onDelete: SetNull)"
+      }
+    ]
+  },
+  {
+    "id": "ai-meeting-agent-backend-src-routes-gap-compliance-ts-gap-features",
+    "sourceProject": "AiMeetingAgent",
+    "name": "gap_features",
+    "displayName": "Gap Features",
+    "framework": "SQL",
+    "sourceFile": "backend/src/routes/gap-compliance.ts",
+    "columns": [
+      {
+        "name": "id",
+        "type": "SERIAL",
+        "nullable": true,
+        "primaryKey": true,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "id SERIAL PRIMARY KEY"
+      },
+      {
+        "name": "slug",
+        "type": "VARCHAR",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "slug VARCHAR(255)"
+      },
+      {
+        "name": "input",
+        "type": "TEXT",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "input TEXT"
+      },
+      {
+        "name": "output",
+        "type": "TEXT",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "output TEXT"
+      },
+      {
+        "name": "meta",
+        "type": "JSONB",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "meta JSONB"
+      },
+      {
+        "name": "created_at",
+        "type": "TIMESTAMP",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "CURRENT_TIMESTAMP",
+        "sourceLine": "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
+      }
+    ]
+  },
+  {
+    "id": "ai-meeting-agent-backend-src-routes-gap-decision-consensus-check-ts-gap-features",
+    "sourceProject": "AiMeetingAgent",
+    "name": "gap_features",
+    "displayName": "Gap Features",
+    "framework": "SQL",
+    "sourceFile": "backend/src/routes/gap-decision-consensus-check.ts",
+    "columns": [
+      {
+        "name": "id",
+        "type": "SERIAL",
+        "nullable": true,
+        "primaryKey": true,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "id SERIAL PRIMARY KEY"
+      },
+      {
+        "name": "slug",
+        "type": "VARCHAR",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "slug VARCHAR(255)"
+      },
+      {
+        "name": "input",
+        "type": "TEXT",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "input TEXT"
+      },
+      {
+        "name": "output",
+        "type": "TEXT",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "output TEXT"
+      },
+      {
+        "name": "meta",
+        "type": "JSONB",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "meta JSONB"
+      },
+      {
+        "name": "created_at",
+        "type": "TIMESTAMP",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "CURRENT_TIMESTAMP",
+        "sourceLine": "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
+      }
+    ]
+  },
+  {
+    "id": "ai-meeting-agent-backend-src-routes-gap-full-text-ts-gap-features",
+    "sourceProject": "AiMeetingAgent",
+    "name": "gap_features",
+    "displayName": "Gap Features",
+    "framework": "SQL",
+    "sourceFile": "backend/src/routes/gap-full-text.ts",
+    "columns": [
+      {
+        "name": "id",
+        "type": "SERIAL",
+        "nullable": true,
+        "primaryKey": true,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "id SERIAL PRIMARY KEY"
+      },
+      {
+        "name": "slug",
+        "type": "VARCHAR",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "slug VARCHAR(255)"
+      },
+      {
+        "name": "input",
+        "type": "TEXT",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "input TEXT"
+      },
+      {
+        "name": "output",
+        "type": "TEXT",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "output TEXT"
+      },
+      {
+        "name": "meta",
+        "type": "JSONB",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "meta JSONB"
+      },
+      {
+        "name": "created_at",
+        "type": "TIMESTAMP",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "CURRENT_TIMESTAMP",
+        "sourceLine": "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
+      }
+    ]
+  },
+  {
+    "id": "ai-meeting-agent-backend-src-routes-gap-in-meeting-ts-gap-features",
+    "sourceProject": "AiMeetingAgent",
+    "name": "gap_features",
+    "displayName": "Gap Features",
+    "framework": "SQL",
+    "sourceFile": "backend/src/routes/gap-in-meeting.ts",
+    "columns": [
+      {
+        "name": "id",
+        "type": "SERIAL",
+        "nullable": true,
+        "primaryKey": true,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "id SERIAL PRIMARY KEY"
+      },
+      {
+        "name": "slug",
+        "type": "VARCHAR",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "slug VARCHAR(255)"
+      },
+      {
+        "name": "input",
+        "type": "TEXT",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "input TEXT"
+      },
+      {
+        "name": "output",
+        "type": "TEXT",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "output TEXT"
+      },
+      {
+        "name": "meta",
+        "type": "JSONB",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "meta JSONB"
+      },
+      {
+        "name": "created_at",
+        "type": "TIMESTAMP",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "CURRENT_TIMESTAMP",
+        "sourceLine": "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
+      }
+    ]
+  },
+  {
+    "id": "ai-meeting-agent-backend-src-routes-gap-long-term-ts-gap-features",
+    "sourceProject": "AiMeetingAgent",
+    "name": "gap_features",
+    "displayName": "Gap Features",
+    "framework": "SQL",
+    "sourceFile": "backend/src/routes/gap-long-term.ts",
+    "columns": [
+      {
+        "name": "id",
+        "type": "SERIAL",
+        "nullable": true,
+        "primaryKey": true,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "id SERIAL PRIMARY KEY"
+      },
+      {
+        "name": "slug",
+        "type": "VARCHAR",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "slug VARCHAR(255)"
+      },
+      {
+        "name": "input",
+        "type": "TEXT",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "input TEXT"
+      },
+      {
+        "name": "output",
+        "type": "TEXT",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "output TEXT"
+      },
+      {
+        "name": "meta",
+        "type": "JSONB",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "meta JSONB"
+      },
+      {
+        "name": "created_at",
+        "type": "TIMESTAMP",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "CURRENT_TIMESTAMP",
+        "sourceLine": "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
+      }
+    ]
+  },
+  {
+    "id": "ai-meeting-agent-backend-src-routes-gap-meeting-quality-score-ts-gap-features",
+    "sourceProject": "AiMeetingAgent",
+    "name": "gap_features",
+    "displayName": "Gap Features",
+    "framework": "SQL",
+    "sourceFile": "backend/src/routes/gap-meeting-quality-score.ts",
+    "columns": [
+      {
+        "name": "id",
+        "type": "SERIAL",
+        "nullable": true,
+        "primaryKey": true,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "id SERIAL PRIMARY KEY"
+      },
+      {
+        "name": "slug",
+        "type": "VARCHAR",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "slug VARCHAR(255)"
+      },
+      {
+        "name": "input",
+        "type": "TEXT",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "input TEXT"
+      },
+      {
+        "name": "output",
+        "type": "TEXT",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "output TEXT"
+      },
+      {
+        "name": "meta",
+        "type": "JSONB",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "meta JSONB"
+      },
+      {
+        "name": "created_at",
+        "type": "TIMESTAMP",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "CURRENT_TIMESTAMP",
+        "sourceLine": "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
+      }
+    ]
+  },
+  {
+    "id": "ai-meeting-agent-backend-src-routes-gap-mobile-ts-gap-features",
+    "sourceProject": "AiMeetingAgent",
+    "name": "gap_features",
+    "displayName": "Gap Features",
+    "framework": "SQL",
+    "sourceFile": "backend/src/routes/gap-mobile.ts",
+    "columns": [
+      {
+        "name": "id",
+        "type": "SERIAL",
+        "nullable": true,
+        "primaryKey": true,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "id SERIAL PRIMARY KEY"
+      },
+      {
+        "name": "slug",
+        "type": "VARCHAR",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "slug VARCHAR(255)"
+      },
+      {
+        "name": "input",
+        "type": "TEXT",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "input TEXT"
+      },
+      {
+        "name": "output",
+        "type": "TEXT",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "output TEXT"
+      },
+      {
+        "name": "meta",
+        "type": "JSONB",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "meta JSONB"
+      },
+      {
+        "name": "created_at",
+        "type": "TIMESTAMP",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "CURRENT_TIMESTAMP",
+        "sourceLine": "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
+      }
+    ]
+  },
+  {
+    "id": "ai-meeting-agent-backend-src-routes-gap-next-meeting-optimizer-ts-gap-features",
+    "sourceProject": "AiMeetingAgent",
+    "name": "gap_features",
+    "displayName": "Gap Features",
+    "framework": "SQL",
+    "sourceFile": "backend/src/routes/gap-next-meeting-optimizer.ts",
+    "columns": [
+      {
+        "name": "id",
+        "type": "SERIAL",
+        "nullable": true,
+        "primaryKey": true,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "id SERIAL PRIMARY KEY"
+      },
+      {
+        "name": "slug",
+        "type": "VARCHAR",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "slug VARCHAR(255)"
+      },
+      {
+        "name": "input",
+        "type": "TEXT",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "input TEXT"
+      },
+      {
+        "name": "output",
+        "type": "TEXT",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "output TEXT"
+      },
+      {
+        "name": "meta",
+        "type": "JSONB",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "meta JSONB"
+      },
+      {
+        "name": "created_at",
+        "type": "TIMESTAMP",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "CURRENT_TIMESTAMP",
+        "sourceLine": "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
+      }
+    ]
+  },
+  {
+    "id": "ai-meeting-agent-backend-src-routes-gap-outlook-ts-gap-features",
+    "sourceProject": "AiMeetingAgent",
+    "name": "gap_features",
+    "displayName": "Gap Features",
+    "framework": "SQL",
+    "sourceFile": "backend/src/routes/gap-outlook.ts",
+    "columns": [
+      {
+        "name": "id",
+        "type": "SERIAL",
+        "nullable": true,
+        "primaryKey": true,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "id SERIAL PRIMARY KEY"
+      },
+      {
+        "name": "slug",
+        "type": "VARCHAR",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "slug VARCHAR(255)"
+      },
+      {
+        "name": "input",
+        "type": "TEXT",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "input TEXT"
+      },
+      {
+        "name": "output",
+        "type": "TEXT",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "output TEXT"
+      },
+      {
+        "name": "meta",
+        "type": "JSONB",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "meta JSONB"
+      },
+      {
+        "name": "created_at",
+        "type": "TIMESTAMP",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "CURRENT_TIMESTAMP",
+        "sourceLine": "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
+      }
+    ]
+  },
+  {
+    "id": "ai-meeting-agent-backend-src-routes-gap-participant-engagement-analyzer-ts-gap-features",
+    "sourceProject": "AiMeetingAgent",
+    "name": "gap_features",
+    "displayName": "Gap Features",
+    "framework": "SQL",
+    "sourceFile": "backend/src/routes/gap-participant-engagement-analyzer.ts",
+    "columns": [
+      {
+        "name": "id",
+        "type": "SERIAL",
+        "nullable": true,
+        "primaryKey": true,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "id SERIAL PRIMARY KEY"
+      },
+      {
+        "name": "slug",
+        "type": "VARCHAR",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "slug VARCHAR(255)"
+      },
+      {
+        "name": "input",
+        "type": "TEXT",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "input TEXT"
+      },
+      {
+        "name": "output",
+        "type": "TEXT",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "output TEXT"
+      },
+      {
+        "name": "meta",
+        "type": "JSONB",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "meta JSONB"
+      },
+      {
+        "name": "created_at",
+        "type": "TIMESTAMP",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "CURRENT_TIMESTAMP",
+        "sourceLine": "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
+      }
+    ]
+  },
+  {
+    "id": "ai-meeting-agent-backend-src-routes-gap-video-ts-gap-features",
+    "sourceProject": "AiMeetingAgent",
+    "name": "gap_features",
+    "displayName": "Gap Features",
+    "framework": "SQL",
+    "sourceFile": "backend/src/routes/gap-video.ts",
+    "columns": [
+      {
+        "name": "id",
+        "type": "SERIAL",
+        "nullable": true,
+        "primaryKey": true,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "id SERIAL PRIMARY KEY"
+      },
+      {
+        "name": "slug",
+        "type": "VARCHAR",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "slug VARCHAR(255)"
+      },
+      {
+        "name": "input",
+        "type": "TEXT",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "input TEXT"
+      },
+      {
+        "name": "output",
+        "type": "TEXT",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "output TEXT"
+      },
+      {
+        "name": "meta",
+        "type": "JSONB",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "meta JSONB"
+      },
+      {
+        "name": "created_at",
+        "type": "TIMESTAMP",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "CURRENT_TIMESTAMP",
+        "sourceLine": "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
+      }
+    ]
+  },
+  {
+    "id": "ai-meeting-agent-backend-prisma-schema-prisma-integration",
+    "sourceProject": "AiMeetingAgent",
+    "name": "Integration",
+    "displayName": "Integration",
+    "framework": "Prisma",
+    "sourceFile": "backend/prisma/schema.prisma",
+    "columns": [
+      {
+        "name": "id",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": true,
+        "unique": false,
+        "defaultValue": "uuid(",
+        "sourceLine": "id          String   @id @default(uuid())"
+      },
+      {
+        "name": "name",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "name        String   // google_calendar, outlook, zoom, teams, slack"
+      },
+      {
+        "name": "type",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "type        String   // calendar, video, messaging"
+      },
+      {
+        "name": "status",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "\"disconnected\"",
+        "sourceLine": "status      String   @default(\"disconnected\") // connected, disconnected, error"
+      },
+      {
+        "name": "config",
+        "type": "Json?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "config      Json?"
+      }
+    ]
+  },
+  {
+    "id": "ai-meeting-agent-backend-prisma-schema-prisma-meeting",
+    "sourceProject": "AiMeetingAgent",
+    "name": "Meeting",
+    "displayName": "Meeting",
+    "framework": "Prisma",
+    "sourceFile": "backend/prisma/schema.prisma",
+    "columns": [
+      {
+        "name": "id",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": true,
+        "unique": false,
+        "defaultValue": "uuid(",
+        "sourceLine": "id          String   @id @default(uuid())"
+      },
+      {
+        "name": "title",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "title       String"
+      },
+      {
+        "name": "description",
+        "type": "String?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "description String?"
+      },
+      {
+        "name": "startTime",
+        "type": "DateTime",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "startTime   DateTime"
+      },
+      {
+        "name": "endTime",
+        "type": "DateTime",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "endTime     DateTime"
+      },
+      {
+        "name": "status",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "\"scheduled\"",
+        "sourceLine": "status      String   @default(\"scheduled\") // scheduled, in_progress, completed, cancelled"
+      },
+      {
+        "name": "meetingLink",
+        "type": "String?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "meetingLink String?"
+      },
+      {
+        "name": "recordingUrl",
+        "type": "String?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "recordingUrl String?"
+      },
+      {
+        "name": "userId",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "userId      String"
+      },
+      {
+        "name": "user",
+        "type": "User",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "user        User     @relation(fields: [userId], references: [id])"
+      },
+      {
+        "name": "participants",
+        "type": "Participant[]",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "participants Participant[]"
+      },
+      {
+        "name": "actionItems",
+        "type": "ActionItem[]",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "actionItems  ActionItem[]"
+      },
+      {
+        "name": "notes",
+        "type": "MeetingNote[]",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "notes        MeetingNote[]"
+      },
+      {
+        "name": "transcript",
+        "type": "Transcript?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "transcript   Transcript?"
+      },
+      {
+        "name": "agendaItems",
+        "type": "AgendaItem[]",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "agendaItems  AgendaItem[]"
+      },
+      {
+        "name": "decisions",
+        "type": "Decision[]",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "decisions    Decision[]"
+      },
+      {
+        "name": "followUps",
+        "type": "FollowUp[]",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "followUps    FollowUp[]"
+      },
+      {
+        "name": "insights",
+        "type": "AIInsight[]",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "insights     AIInsight[]"
+      }
+    ]
+  },
+  {
+    "id": "ai-meeting-agent-backend-prisma-schema-prisma-meeting-coach-report",
+    "sourceProject": "AiMeetingAgent",
+    "name": "MeetingCoachReport",
+    "displayName": "Meeting Coach Report",
+    "framework": "Prisma",
+    "sourceFile": "backend/prisma/schema.prisma",
+    "columns": [
+      {
+        "name": "id",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": true,
+        "unique": false,
+        "defaultValue": "uuid(",
+        "sourceLine": "id               String   @id @default(uuid())"
+      },
+      {
+        "name": "meetingId",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "meetingId        String"
+      },
+      {
+        "name": "totalDuration",
+        "type": "Int",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "totalDuration    Int      // total transcript duration in seconds"
+      },
+      {
+        "name": "participantCount",
+        "type": "Int",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "participantCount Int"
+      },
+      {
+        "name": "speakingTime",
+        "type": "Json",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "speakingTime     Json     // { participantName: seconds }"
+      },
+      {
+        "name": "interruptionRate",
+        "type": "Json",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "interruptionRate Json     // { participantName: count }"
+      },
+      {
+        "name": "monologueCount",
+        "type": "Json",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "monologueCount   Json     // { participantName: count_of_monologues }"
+      },
+      {
+        "name": "imbalanceScore",
+        "type": "Float",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "imbalanceScore   Float    // 0-100 — how unequal participation was"
+      },
+      {
+        "name": "aiInsights",
+        "type": "Json",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "aiInsights       Json     // { summary, recommendations[], warnings[] } from AI"
+      },
+      {
+        "name": "aiResults",
+        "type": "Json",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "aiResults        Json     // raw AI response for traceability"
+      }
+    ]
+  },
+  {
+    "id": "ai-meeting-agent-backend-prisma-schema-prisma-meeting-note",
+    "sourceProject": "AiMeetingAgent",
+    "name": "MeetingNote",
+    "displayName": "Meeting Note",
+    "framework": "Prisma",
+    "sourceFile": "backend/prisma/schema.prisma",
+    "columns": [
+      {
+        "name": "id",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": true,
+        "unique": false,
+        "defaultValue": "uuid(",
+        "sourceLine": "id        String   @id @default(uuid())"
+      },
+      {
+        "name": "content",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "content   String"
+      },
+      {
+        "name": "type",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "\"manual\"",
+        "sourceLine": "type      String   @default(\"manual\") // manual, ai_generated"
+      },
+      {
+        "name": "meetingId",
+        "type": "String?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "meetingId String?"
+      },
+      {
+        "name": "meeting",
+        "type": "Meeting?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "meeting   Meeting? @relation(fields: [meetingId], references: [id], onDelete: SetNull)"
+      },
+      {
+        "name": "authorId",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "authorId  String"
+      },
+      {
+        "name": "author",
+        "type": "User",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "author    User   @relation(fields: [authorId], references: [id])"
+      }
+    ]
+  },
+  {
+    "id": "ai-meeting-agent-backend-prisma-schema-prisma-meeting-series",
+    "sourceProject": "AiMeetingAgent",
+    "name": "MeetingSeries",
+    "displayName": "Meeting Series",
+    "framework": "Prisma",
+    "sourceFile": "backend/prisma/schema.prisma",
+    "columns": [
+      {
+        "name": "id",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": true,
+        "unique": false,
+        "defaultValue": "uuid(",
+        "sourceLine": "id              String   @id @default(uuid())"
+      },
+      {
+        "name": "name",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "name            String"
+      },
+      {
+        "name": "cadence",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "cadence         String   // daily, weekly, biweekly, monthly"
+      },
+      {
+        "name": "participants",
+        "type": "String[]",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "participants    String[] // canonical participant emails"
+      },
+      {
+        "name": "meetingIds",
+        "type": "String[]",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "meetingIds      String[] // matched Meeting IDs in this series"
+      },
+      {
+        "name": "decisionDensity",
+        "type": "Float",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "decisionDensity Float    // avg decisions per meeting"
+      },
+      {
+        "name": "actionDensity",
+        "type": "Float",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "actionDensity   Float    // avg action items per meeting"
+      },
+      {
+        "name": "riskLevel",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "\"healthy\"",
+        "sourceLine": "riskLevel       String   @default(\"healthy\") // healthy, at_risk, redundant"
+      },
+      {
+        "name": "aiAnalysis",
+        "type": "String?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "aiAnalysis      String?  @db.Text"
+      },
+      {
+        "name": "aiResults",
+        "type": "Json?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "aiResults       Json?    // raw AI response"
+      },
+      {
+        "name": "lastAnalyzedAt",
+        "type": "DateTime",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "now(",
+        "sourceLine": "lastAnalyzedAt  DateTime @default(now())"
+      }
+    ]
+  },
+  {
+    "id": "ai-meeting-agent-backend-prisma-schema-prisma-meeting-template",
+    "sourceProject": "AiMeetingAgent",
+    "name": "MeetingTemplate",
+    "displayName": "Meeting Template",
+    "framework": "Prisma",
+    "sourceFile": "backend/prisma/schema.prisma",
+    "columns": [
+      {
+        "name": "id",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": true,
+        "unique": false,
+        "defaultValue": "uuid(",
+        "sourceLine": "id          String   @id @default(uuid())"
+      },
+      {
+        "name": "name",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": true,
+        "defaultValue": "",
+        "sourceLine": "name        String   @unique"
+      },
+      {
+        "name": "description",
+        "type": "String?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "description String?"
+      },
+      {
+        "name": "duration",
+        "type": "Int",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "duration    Int      // in minutes"
+      },
+      {
+        "name": "agendaItems",
+        "type": "Json",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "agendaItems Json     // array of agenda items"
+      },
+      {
+        "name": "isPublic",
+        "type": "Boolean",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "false",
+        "sourceLine": "isPublic    Boolean  @default(false)"
+      }
+    ]
+  },
+  {
+    "id": "ai-meeting-agent-backend-prisma-schema-prisma-notification",
+    "sourceProject": "AiMeetingAgent",
+    "name": "Notification",
+    "displayName": "Notification",
+    "framework": "Prisma",
+    "sourceFile": "backend/prisma/schema.prisma",
+    "columns": [
+      {
+        "name": "id",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": true,
+        "unique": false,
+        "defaultValue": "uuid(",
+        "sourceLine": "id        String   @id @default(uuid())"
+      },
+      {
+        "name": "title",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "title     String"
+      },
+      {
+        "name": "message",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "message   String"
+      },
+      {
+        "name": "type",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "type      String   // meeting_reminder, action_item, follow_up, system"
+      },
+      {
+        "name": "status",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "\"unread\"",
+        "sourceLine": "status    String   @default(\"unread\") // unread, read, dismissed"
+      },
+      {
+        "name": "userId",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "userId    String"
+      },
+      {
+        "name": "user",
+        "type": "User",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)"
+      }
+    ]
+  },
+  {
+    "id": "ai-meeting-agent-backend-prisma-schema-prisma-participant",
+    "sourceProject": "AiMeetingAgent",
+    "name": "Participant",
+    "displayName": "Participant",
+    "framework": "Prisma",
+    "sourceFile": "backend/prisma/schema.prisma",
+    "columns": [
+      {
+        "name": "id",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": true,
+        "unique": false,
+        "defaultValue": "uuid(",
+        "sourceLine": "id        String   @id @default(uuid())"
+      },
+      {
+        "name": "name",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "name      String"
+      },
+      {
+        "name": "email",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "email     String"
+      },
+      {
+        "name": "role",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "\"attendee\"",
+        "sourceLine": "role      String   @default(\"attendee\") // host, attendee, presenter"
+      },
+      {
+        "name": "status",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "\"pending\"",
+        "sourceLine": "status    String   @default(\"pending\") // pending, accepted, declined, tentative"
+      },
+      {
+        "name": "meetingId",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "meetingId String"
+      },
+      {
+        "name": "meeting",
+        "type": "Meeting",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "meeting   Meeting @relation(fields: [meetingId], references: [id], onDelete: Cascade)"
+      }
+    ]
+  },
+  {
+    "id": "ai-meeting-agent-backend-prisma-schema-prisma-transcript",
+    "sourceProject": "AiMeetingAgent",
+    "name": "Transcript",
+    "displayName": "Transcript",
+    "framework": "Prisma",
+    "sourceFile": "backend/prisma/schema.prisma",
+    "columns": [
+      {
+        "name": "id",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": true,
+        "unique": false,
+        "defaultValue": "uuid(",
+        "sourceLine": "id        String   @id @default(uuid())"
+      },
+      {
+        "name": "content",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "content   String"
+      },
+      {
+        "name": "language",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "\"en\"",
+        "sourceLine": "language  String   @default(\"en\")"
+      },
+      {
+        "name": "duration",
+        "type": "Int?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "duration  Int?     // in seconds"
+      },
+      {
+        "name": "meetingId",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": true,
+        "defaultValue": "",
+        "sourceLine": "meetingId String  @unique"
+      },
+      {
+        "name": "meeting",
+        "type": "Meeting",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "meeting   Meeting @relation(fields: [meetingId], references: [id], onDelete: Cascade)"
+      }
+    ]
+  },
+  {
+    "id": "ai-meeting-agent-backend-prisma-schema-prisma-user",
+    "sourceProject": "AiMeetingAgent",
+    "name": "User",
+    "displayName": "User",
+    "framework": "Prisma",
+    "sourceFile": "backend/prisma/schema.prisma",
+    "columns": [
+      {
+        "name": "id",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": true,
+        "unique": false,
+        "defaultValue": "uuid(",
+        "sourceLine": "id        String   @id @default(uuid())"
+      },
+      {
+        "name": "email",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": true,
+        "defaultValue": "",
+        "sourceLine": "email     String   @unique"
+      },
+      {
+        "name": "password",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "password  String"
+      },
+      {
+        "name": "name",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "name      String"
+      },
+      {
+        "name": "avatar",
+        "type": "String?",
+        "nullable": true,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "avatar    String?"
+      },
+      {
+        "name": "role",
+        "type": "String",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "\"user\"",
+        "sourceLine": "role      String   @default(\"user\")"
+      },
+      {
+        "name": "meetings",
+        "type": "Meeting[]",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "meetings      Meeting[]"
+      },
+      {
+        "name": "actionItems",
+        "type": "ActionItem[]",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "actionItems   ActionItem[]"
+      },
+      {
+        "name": "notes",
+        "type": "MeetingNote[]",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "notes         MeetingNote[]"
+      },
+      {
+        "name": "notifications",
+        "type": "Notification[]",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "notifications Notification[]"
+      },
+      {
+        "name": "insights",
+        "type": "AIInsight[]",
+        "nullable": false,
+        "primaryKey": false,
+        "unique": false,
+        "defaultValue": "",
+        "sourceLine": "insights      AIInsight[]"
+      }
+    ]
+  },
+  {
     "id": "ai-project-manager-backend-db-init-sql-activity-logs",
     "sourceProject": "AIProjectManager",
     "name": "activity_logs",

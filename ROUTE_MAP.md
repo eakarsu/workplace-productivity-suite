@@ -7,6 +7,10 @@ Primary routes:
 - `/profiles`
 
 Feature routes:
+- `/crm-task-sync`
+- `/action-items`
+- `/transcript-summaries`
+- `/meeting-notes`
 - `/workspaces`
 - `/tasks`
 - `/projects`

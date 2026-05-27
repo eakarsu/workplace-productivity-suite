@@ -10,6 +10,52 @@ export type SourceAIToolField = {
 };
 
 export const sourceAIToolFieldsByToolId: Record<string, SourceAIToolField[]> = {
+  "meeting-intelligence-copilot": [
+    {
+      "name": "meeting_title",
+      "label": "Meeting Title",
+      "type": "text",
+      "defaultValue": "Pilot workflow review",
+      "placeholder": "Enter meeting title",
+      "options": [],
+      "required": true,
+      "source": "AiMeetingAgent"
+    },
+    {
+      "name": "transcript",
+      "label": "Transcript",
+      "type": "textarea",
+      "defaultValue": "Paste meeting transcript or notes here.",
+      "placeholder": "Enter transcript",
+      "options": [],
+      "required": true,
+      "source": "AiMeetingAgent"
+    },
+    {
+      "name": "attendees",
+      "label": "Attendees",
+      "type": "text",
+      "defaultValue": "Operations Lead, Product Owner, Client Sponsor",
+      "placeholder": "Enter attendees",
+      "options": [],
+      "required": true,
+      "source": "AiMeetingAgent"
+    },
+    {
+      "name": "output_format",
+      "label": "Output Format",
+      "type": "select",
+      "defaultValue": "Action items",
+      "placeholder": "Enter output format",
+      "options": [
+        "Action items",
+        "Executive summary",
+        "CRM follow-up"
+      ],
+      "required": true,
+      "source": "AiMeetingAgent"
+    }
+  ],
   "ai-project-manager-ai-history-67q48z-exact-ai": [
     {
       "name": "context",
